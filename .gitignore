@@ -1,0 +1,9 @@
+
+*.iml
+.idea/gradle.xml
+.idea/misc.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.properties
+*.bin
+*.lock
