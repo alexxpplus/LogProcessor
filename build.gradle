@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'org.csdts.logprocessor'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Log Processor',
+                'Implementation-Version': version,
+                'Main-Class': 'com.csdts.logprocessor.LogProcessor'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+    compile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.1'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
+}
